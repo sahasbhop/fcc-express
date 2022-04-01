@@ -15,5 +15,10 @@ app.get('/json', (req, res) => {
     const message = process.env.MESSAGE_STYLE === 'uppercase' ? "HELLO JSON" : "Hello json"
     res.json({message})
 })
-
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString()
+    next()
+}, (req, res) => {
+    res.json({time: req.time})
+})
 module.exports = app;
