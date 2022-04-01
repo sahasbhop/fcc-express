@@ -30,4 +30,8 @@ app.get('/name', (req, res) => {
     const name = "".concat(req.query['first'], " ", req.query['last'])
     res.json({name})
 })
+app.post('/name', (req, res) => {
+    const name = "".concat(req.body.first, " ", req.body.last)
+    res.json({name})
+})
 module.exports = app;
