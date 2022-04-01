@@ -24,4 +24,8 @@ app.get('/now', (req, res, next) => {
 app.get('/:word/echo', (req, res) => {
     res.json({echo: req.params['word']})
 })
+app.get('/name', (req, res) => {
+    const name = "".concat(req.query['first'], " ", req.query['last'])
+    res.json({name})
+})
 module.exports = app;
