@@ -2,12 +2,14 @@ const express = require('express');
 const path = require('path')
 const app = express();
 require('dotenv').config()
+const bodyParser = require('body-parser');
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path} - ${req.ip}`)
     next()
 })
+app.use(bodyParser.urlencoded({extended: false}))
 app.get(`/`, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
